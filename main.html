@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos.">
+  <meta name="keywords" content="Motion Forecasting, Transformer, Egocentric Videos">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+
+  </script> -->
+  <style>
+  .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://stevenlsw.github.io/">Shaowei Liu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://subarnatripathi.github.io/">Subarna Tripathi</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/somdebmajumdar/">Somdeb Majumdar</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://xiaolonw.github.io/">Xiaolong Wang</a><sup>3</sup>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
+            <span class="author-block"><sup>2</sup>Intel Labs</span>
+            <span class="author-block"><sup>3</sup>UC San Diego</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">(* the work was done at an internship at Intel Labs)</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">CVPR 2022</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/j1Iwk9QYMpU"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code and Data (Coming Soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" muted playsinline autoplay loop height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Given observation frames of the past, we predict future hand trajectories (blue and red lines) and object interaction hotspots (heatmaps).
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+  <div align="center">
+  <video autoplay loop muted playsinline controls width="50%">
+    <source src="./static/videos/teaser_merge.mp4" type="video/mp4">
+  </video>
+</div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose to forecast future hand-object interactions given an egocentric video. Instead of predicting action labels or pixels, 
+            we directly predict the hand motion trajectory and the future contact points on the next active object (i.e., interaction hotspots). 
+            This relatively low dimensional  representation provides a concrete description of future interactions. 
+            To tackle this task, we first provide an automatic way to collect trajectory and hotspots labels in large-scale data. 
+            We then use this data to train an Object-Centric Transformer (OCT) model for prediction. 
+            Our model performs hand and object interaction reasoning via the self-attention mechanism in Transformers. 
+            OCT also provides a probabilistic framework to sample the future trajectory and hotspots to handle uncertainty in prediction. 
+            We perform experiments with the Epic-Kitchen dataset, and show that OCT significantly outperforms state-of-the-art approaches by a large margin. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/j1Iwk9QYMpU?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <!-- <iframe src="https://drive.google.com/file/d/1rzp2M77EUGmMTJT6EKMksaKAMjnHxCUc/preview"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Automatic training data generation</h2>
+        
+        <div class="content has-text-justified">
+          <p style="text-align: center;">
+            We use off-the-shelf tools to collect future hand trajectory and interaction hotspots automatically. 
+          </p>
+        </div>
+
+        <h3 class="title is-6">Automatic generated Epic-Kitchen training labels</h3>
+          <div class="column">
+            <img src="./static/images/train_ek55_1.png" />
+          </div>
+
+          <details>
+            <summary class="title is-6 button">Click here for more results</summary>
+            <div class="column">
+              <img src="./static/images/train_ek55_2.png" />
+            </div>
+          </details>
+
+        <h3 class="title is-4">Automatic generated EGTEA Gaze+ training labels</h3>
+          <div class="column">
+            <img src="./static/images/train_egtea_1.png" />
+          </div>
+
+          <details>
+            <summary class="title is-6 button">Click here for more results</summary>
+            <div class="column">
+              <img src="./static/images/train_egtea_2.png" />
+            </div>
+          </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Object-Centric Transformer (OCT)</h2>
+        
+        <div class="content has-text-justified">
+          <p>
+            The OCT has an encoder-decoder architecture.
+            We extract per-frame features and concatenate it with detected bounding boxes as input to the Transformer encoder. 
+            We take the output from the encoder and previously predicted hand locations as input to the decoder. 
+            The decoder output is sent to hand-CVAE and object-CVAE to get final results.
+          </p>
+          <div class="column">
+            <video autoplay playsinline controls muted loop width="100%">
+              <source src="static/videos/network.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Comparsion -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Trajectory estimation comparison</h2>
+          <p style="text-align: center;">
+          We evaluate future hand trajectory estimation performance on EPIC-KITCHENS-100 dataset.
+          </p>
+
+          <div style="padding: 12px;"></div>
+          <div class="columns is-centered">              
+              <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                <source src="static/videos/traj.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+        
+        <div class="hr"></div>
+
+        <h2 class="title is-3">Interaction hotspots comparison</h2>
+          <p style="text-align: center;">
+          We evaluate interaction hotspots performance on EPIC-KITCHENS-100 dataset.
+          </p>
+
+          <div style="padding: 12px;"></div>
+          <div class="columns is-centered">              
+              <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                <source src="static/videos/hotspot.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+
+        <div class="hr"></div>
+
+        <h2 class="title is-3">Diverse future prediction</h2>
+          <p style="text-align: center;">
+          We visualize diverse future predictions on EPIC-KITCHENS-100 dataset.
+          </p>
+
+          <div style="padding: 12px;"></div>
+          <div class="columns is-centered">              
+              <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                <source src="static/videos/diverse.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+
+        <div class="hr"></div>
+
+        <h2 class="title is-3">Cross-dataset generalization</h2>
+          <p style="text-align: center;">
+          We trained on Epic-Kitchen 100 dataset and tested on EGTEA Gaze+ dataset.
+          </p>
+
+          <div style="padding: 12px;"></div>
+          <div class="columns is-centered">              
+              <video id="dollyzoom" autoplay playsinline controls muted loop width="60%">
+                <source src="static/videos/cross_gen.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+
+
+      </div>
+    </div>
+    <!-- Comparsion -->
+    
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{liu2022joint,
+  title={Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos},
+  author={Liu, Shaowei and Tripathi, Subarna and Majumdar, Somdeb and Wang, Xiaolong},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2022}
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <div class="columns is-centered"><p>
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Here</a>.
+          </p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

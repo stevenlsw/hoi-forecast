@@ -200,14 +200,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We propose to forecast future hand-object interactions given an egocentric video. Instead of predicting action labels or pixels, 
+            We propose to forecast future hand-object interactions given an egocentric video. 
+            Instead of predicting action labels or pixels, 
             we directly predict the hand motion trajectory and the future contact points on the next active object (i.e., interaction hotspots). 
-            This relatively low dimensional  representation provides a concrete description of future interactions. 
-            To tackle this task, we first provide an automatic way to collect trajectory and hotspots labels in large-scale data. 
+            This relatively low-dimensional representation provides a concrete description of future interactions. 
+            To tackle this task, we first provide an automatic way to collect trajectory and hotspots labels on large-scale data. 
             We then use this data to train an Object-Centric Transformer (OCT) model for prediction. 
             Our model performs hand and object interaction reasoning via the self-attention mechanism in Transformers. 
             OCT also provides a probabilistic framework to sample the future trajectory and hotspots to handle uncertainty in prediction. 
-            We perform experiments with the Epic-Kitchen dataset, and show that OCT significantly outperforms state-of-the-art approaches by a large margin. 
+            We perform experiments on the Epic-Kitchens-55, Epic-Kitchens-100, and EGTEA Gaze+ datasets, 
+            and show that OCT significantly outperforms state-of-the-art approaches by a large margin.
           </p>
         </div>
       </div>

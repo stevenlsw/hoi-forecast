@@ -110,7 +110,7 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
     pip install -r requirements.txt
     ```
 
-- Extract per-frame features of training set similar to [RULSTM](https://github.com/fpv-iplab/rulstm) and store them in `data/ek55/feats/ek55.lmdb`, the key-value pair likes
+- Extract per-frame features of training set similar to [RULSTM](https://github.com/fpv-iplab/rulstm) and store them in `data/ek100/feats/ek100.lmdb`, the key-value pair likes
     ```python
     fname = 'P01/rgb_frames/P01_01/frame_0000000720.jpg'
     env[fname.encode()] = result_dict # extracted feature results

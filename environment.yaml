@@ -1,0 +1,14 @@
+name: fhoi
+channels:
+  - defaults
+dependencies:
+  - python=3.6
+  - pip
+  - pip:
+    - pandas
+    - numpy
+    - matplotlib
+    - dataclasses
+    - protobuf
+    - Scipy
+    - opencv-contrib-python==3.4.2.16

@@ -5,7 +5,7 @@
 
 #### [[Project Page]](https://stevenlsw.github.io/hoi-forecast/) [[Paper]](https://arxiv.org/abs/2204.01696) [[Training Data]](https://drive.google.com/drive/folders/1llDYFwn2gGQLpcWy6YScp3ej7A3LIPFc)
 
-Given observation frames of the past, we predict future hand trajectories (green and red lines) and object interaction hotspots (heatmaps) in egocentric view. 
+Given observation frames of the past, we predict future hand trajectories (green and red lines) and object interaction hotspots (heatmaps) in egocentric view. We genearte training data **automatically** and use this data to train an Object-Centric Transformer (OCT) model for prediction.
 <br>
 <p align="center">
     <img src="assets/teaser.gif" width="456">
@@ -24,7 +24,7 @@ Given observation frames of the past, we predict future hand trajectories (green
     conda activate fhoi
     ```
 
-## Quick dataset generation demo
+## Quick training data generation
 Official Epic-Kitchens Dataset looks the same as `assets/EPIC-KITCHENS`, rgb frames needed for the demo has been pre-downloaded in `assets/EPIC-KITCHENS/P01/rgb_frames/P01_01`. 
 
 - Download Epic-Kitchens 55 Dataset [annotations](https://raw.githubusercontent.com/epic-kitchens/epic-kitchens-55-annotations/master/EPIC_train_action_labels.csv) and save in `assets` folder
@@ -66,6 +66,11 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
 
 - Download [pretrained models]() on EK100 and the stored model path is refered as `$resume`. 
 
+- Install PyTorch and dependencies by the following command:
+    ```Shell
+    pip install -r requirements.txt
+    ```
+
 - Evaluate future hand trajectory
     ```Shell
     python traineval.py --evaluate --ek_version=ek100 --resume={path to the model} --traj_only
@@ -81,8 +86,8 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
     <table>
     <thead>
     <tr>
-        <th colspan="2">Hand Trajectory</th>
-        <th colspan="3">Interaction Hotspots</th>
+        <th colspan="2" style="text-align:center;">Hand Trajectory</th>
+        <th colspan="3" style="text-align:center;">Interaction Hotspots</th>
     </tr>
     <tr>
         <th>ADE &#8595;</th>
@@ -105,11 +110,6 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
 
 
 ## Training
-- Install PyTorch and dependencies by the following command:
-    ```Shell
-    pip install -r requirements.txt
-    ```
-
 - Extract per-frame features of training set similar to [RULSTM](https://github.com/fpv-iplab/rulstm) and store them in `data/ek100/feats/ek100.lmdb`, the key-value pair likes
     ```python
     fname = 'P01/rgb_frames/P01_01/frame_0000000720.jpg'

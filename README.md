@@ -81,7 +81,6 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
     <table>
     <thead>
     <tr>
-        <th></th>
         <th colspan="2">Hand Trajectory</th>
         <th colspan="3">Interaction Hotspots</th>
     </tr>
@@ -95,11 +94,11 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
     </thead>
     <tbody>
     <tr>
-        <td>0.12</td>
-        <td>0.11</td>
-        <td>0.19</td>
-        <td>0.69</td>
-        <td>0.72</td>
+        <th>0.12</th>
+        <th>0.11</th>
+        <th>0.19</th>
+        <th>0.69</th>
+        <th>0.72</th>
     </tr>
     </tbody>
     </table>

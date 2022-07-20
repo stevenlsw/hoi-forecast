@@ -64,7 +64,7 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
     |   |-- rulstm
     ```
 
-- Download [pretrained models]() on EK100 and the stored model path is refered as `$resume`. 
+- Download [pretrained models](https://drive.google.com/file/d/1tqoD8fy6ty1nxclEi-YTv3ivUwcLERQA/view?usp=sharing) on EK100 and the stored model path is refered as `$resume`. 
 
 - Install PyTorch and dependencies by the following command:
     ```Shell

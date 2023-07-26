@@ -209,7 +209,7 @@ class ObjectTransformer(nn.Module):
         target_hand = future_hands[:, :, 1:, :]
         target_hand = target_hand.reshape(-1, target_hand.shape[-1])
 
-        pred_hand, traj_loss, traj_kl_loss = self.hand_head(x_hand, target_hand, future_valid, contact=None,
+        pred_hand, traj_loss, traj_kl_loss = self.hand_head(x_hand, target_hand, future_valid, contact_point=None,
                                                             return_pred=True)
 
         r_pred_contact, r_obj_loss, r_obj_kl_loss = self.object_head(memory[:, 0, :], contact_point, future_rhand,

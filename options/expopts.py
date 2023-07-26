@@ -10,3 +10,5 @@ def add_exp_opts(parser):
     parser.add_argument("--use_cuda", default=1, type=int, help="use GPU (default: True)")
     parser.add_argument('--ek_version', default="ek55", choices=["ek55", "ek100"], help="epic dataset version")
     parser.add_argument("--traj_only", action="store_true", help="evaluate traj on validation dataset")
+    parser.add_argument("--host_folder", default="./host_folder", help="folder path that places all experiment sessions")
+    parser.add_argument("--exp_id", default="0000", help="folder name for one experiment session")    

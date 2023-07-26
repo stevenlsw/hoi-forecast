@@ -101,7 +101,7 @@ def main(args):
                 modelio.save_checkpoint(
                 {
                     "epoch": epoch + 1,
-                    "network": args.network,
+                    "network": "default",
                     "state_dict": model.state_dict(),
                     "optimizer": optimizer.state_dict(),
                 },

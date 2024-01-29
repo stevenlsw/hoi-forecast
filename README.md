@@ -1,6 +1,7 @@
 # HOI-Forecast
 
 **Joint Hand Motion and Interaction Hotspots Prediction from Egocentric Videos (CVPR 2022)**
+
 <a href="https://arxiv.org/abs/2204.01696"><img src="https://img.shields.io/badge/arXiv-2204.01696-b31b1b.svg"></a>
 
 #### [[Project Page]](https://stevenlsw.github.io/hoi-forecast/) [[Paper]](https://arxiv.org/abs/2204.01696) [[Training Data]](https://drive.google.com/drive/folders/1llDYFwn2gGQLpcWy6YScp3ej7A3LIPFc)
@@ -46,7 +47,7 @@ Official Epic-Kitchens Dataset looks the same as `assets/EPIC-KITCHENS`, rgb fra
 ## Evaluation on EK100
 We maunally collect the hand trajectories and interaction hotspots for evaluation. We pre-extract the input videos features.
 
-- Download the processed [files](https://drive.google.com/file/d/1IUreVIjAKbi-TZq7ogJz1MfTvVnpV2J5/view?usp=sharing) (include collected labels, pre-extracted features, and dataset partitions, 600 MB) and **unzipped**. You will get the stucture like:
+- Download the processed [files](https://drive.google.com/file/d/1s7qpBa-JjjuGk7v_aiuU2lvRjgP6fi9C/view?usp=sharing) (include collected labels, pre-extracted features, and dataset partitions, 600 MB) and **unzipped**. You will get the stucture like:
     ```
     hoi-forecast
     |-- data 
@@ -64,7 +65,7 @@ We maunally collect the hand trajectories and interaction hotspots for evaluatio
     |   |-- rulstm
     ```
 
-- Download [pretrained models](https://drive.google.com/file/d/1tqoD8fy6ty1nxclEi-YTv3ivUwcLERQA/view?usp=sharing) on EK100 and the stored model path is refered as `$resume`. 
+- Download [pretrained models](https://drive.google.com/file/d/16IkQ4hOQk2_Klhd806J-46hLN-OGokxa/view?usp=sharing) on EK100 and the stored model path is refered as `$resume`. 
 
 - Install PyTorch and dependencies by the following command:
     ```Shell
